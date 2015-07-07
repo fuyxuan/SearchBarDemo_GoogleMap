@@ -14,16 +14,13 @@ import com.example.searchbardemo.MainActivity.ModifyColorCallBack;
 
 public class SizeDialog extends Dialog {
 
-	private Context context;
 	private Button btn15, btn20, btn25;
 	private ModifyTextSizeCallBack modifyTextSizeCallBack;
 	public SizeDialog(Context context , ModifyTextSizeCallBack modifyTextSizeCallBack) {
 		super(context);
-		this.context = context;
 		this.modifyTextSizeCallBack = modifyTextSizeCallBack;
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.dialog_size_choice);
-		
 		findView();
 		setAction();
 	}
@@ -32,7 +29,6 @@ public class SizeDialog extends Dialog {
 		btn15 = (Button) findViewById(R.id.btn_dialog_size_15);
 		btn20 = (Button) findViewById(R.id.btn_dialog_size_20);
 		btn25 = (Button) findViewById(R.id.btn_dialog_size_25);
-
 	}
 
 	private void setAction() {

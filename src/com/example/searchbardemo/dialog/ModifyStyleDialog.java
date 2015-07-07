@@ -14,13 +14,11 @@ import android.widget.Button;
 
 public class ModifyStyleDialog extends Dialog {
 	private Context context;
-
 	private Button btnTextSize, btnBackgroundColor, btnTextColor;
 	private ColorDialog textColorDialog,backgroundColorDialog;
 	private SizeDialog sizeDialog;
 	private ModifyCallBack modifyCallBack;
 	public ModifyStyleDialog(Context context,ModifyCallBack modifyCallBack) {
-
 		super(context);
 		this.context = context;
 		this.modifyCallBack = modifyCallBack;
@@ -39,15 +37,12 @@ public class ModifyStyleDialog extends Dialog {
 			@Override
 			public void size(int textSize) {
 				modifyCallBack.textSizeCallBack(textSize);
-				Log.i("msg","ModifyStyle_colorInt"+textSize);				
 			}
 		});
 		textColorDialog = new ColorDialog(context , new ModifyColorCallBack() {
 			@Override
 			public void color(int colorInt) {
 				modifyCallBack.textColorCallBack(colorInt);
-				Log.i("msg","ModifyStyle_colorInt"+colorInt);
-				// TODO Auto-generated method stub
 			}
 		}
 				
@@ -56,39 +51,30 @@ public class ModifyStyleDialog extends Dialog {
 			@Override
 			public void color(int colorInt) {
 				modifyCallBack.backgroundCallBack(colorInt);
-				Log.i("msg","BACKGROUND   ModifyStyle_colorInt"+colorInt);
-				// TODO Auto-generated method stub
 			}
 		});
 	}
 
 	private void setAction() {
 		btnTextSize.setOnClickListener(new View.OnClickListener() {
-
 			@Override
 			public void onClick(View arg0) {
 				dismiss();
 				sizeDialog.show();
-				Log.i("msg","text_size");
-
 			}
 		});
 		btnBackgroundColor.setOnClickListener(new View.OnClickListener() {
-
 			@Override
 			public void onClick(View arg0) {
 				dismiss();
 				backgroundColorDialog.show();
-				Log.i("msg","back");
 			}
 		});
 		btnTextColor.setOnClickListener(new View.OnClickListener() {
-
 			@Override
 			public void onClick(View arg0) {
 				dismiss();
 				textColorDialog.show();
-				Log.i("msg","text_color");
 			}
 		});
 

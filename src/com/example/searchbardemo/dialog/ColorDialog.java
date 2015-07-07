@@ -13,14 +13,11 @@ import android.widget.Button;
 
 public class ColorDialog extends Dialog {
 
-	private Context context;
 	private Button btnRed, btnYellow, btnGreen, btnBlue, btnBlack;
-	private int[] colorTable;
 	private ModifyColorCallBack modifyColorCallBack;
 	public ColorDialog(Context context , ModifyColorCallBack modifyColorCallBack) {
 		
 		super(context);
-		this.context = context;
 		this.modifyColorCallBack = modifyColorCallBack;
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.dialog_color_choice);
@@ -35,7 +32,6 @@ public class ColorDialog extends Dialog {
 		btnGreen = (Button) findViewById(R.id.btn_dialog_green);
 		btnBlue = (Button) findViewById(R.id.btn_dialog_blue);
 		btnBlack = (Button) findViewById(R.id.btn_dialog_black);
-		colorTable = new int[]{Color.RED,Color.YELLOW,Color.GREEN,Color.BLUE,Color.BLACK};
 
 	}
 
@@ -47,7 +43,6 @@ public class ColorDialog extends Dialog {
 				Log.i("msg","red");
 				modifyColorCallBack.color(Color.RED);
 				dismiss();
-
 			}
 		});
 		btnYellow.setOnClickListener(new View.OnClickListener() {
@@ -74,7 +69,6 @@ public class ColorDialog extends Dialog {
 				Log.i("msg","blue");
 				modifyColorCallBack.color(Color.BLUE);
 				dismiss();
-
 			}
 		});
 		
