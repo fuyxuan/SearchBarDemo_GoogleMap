@@ -1,8 +1,8 @@
 package com.example.searchbardemo.dialog;
 
-import com.example.searchbardemo.MainActivity.ModifyCallBack;
-import com.example.searchbardemo.MainActivity.ModifyColorCallBack;
-import com.example.searchbardemo.MainActivity.ModifyTextSizeCallBack;
+import com.example.searchbardemo.MainActivity.ModifySingleStyle;
+import com.example.searchbardemo.MainActivity.ModifyColorStyle;
+import com.example.searchbardemo.MainActivity.ModifyTextSizeStyle;
 import com.example.searchbardemo.R;
 
 import android.app.Dialog;
@@ -14,13 +14,11 @@ import android.widget.Button;
 
 public class ModifyStyleDialog extends Dialog {
 	private Context context;
-
 	private Button btnTextSize, btnBackgroundColor, btnTextColor;
 	private ColorDialog textColorDialog,backgroundColorDialog;
 	private SizeDialog sizeDialog;
-	private ModifyCallBack modifyCallBack;
-	public ModifyStyleDialog(Context context,ModifyCallBack modifyCallBack) {
-
+	private ModifySingleStyle modifyCallBack;
+	public ModifyStyleDialog(Context context,ModifySingleStyle modifyCallBack) {
 		super(context);
 		this.context = context;
 		this.modifyCallBack = modifyCallBack;
@@ -34,61 +32,49 @@ public class ModifyStyleDialog extends Dialog {
 		btnTextSize = (Button) findViewById(R.id.btn_dialog_text_size);
 		btnBackgroundColor = (Button) findViewById(R.id.btn_dialog_background_color);
 		btnTextColor = (Button) findViewById(R.id.btn_dialog_text_color);
-		sizeDialog = new SizeDialog(context, new ModifyTextSizeCallBack() {
+		sizeDialog = new SizeDialog(context, new ModifyTextSizeStyle() {
 			
 			@Override
 			public void size(int textSize) {
-				modifyCallBack.textSizeCallBack(textSize);
-				Log.i("msg","ModifyStyle_colorInt"+textSize);				
+				modifyCallBack.textSizeSingle(textSize);
 			}
 		});
-		textColorDialog = new ColorDialog(context , new ModifyColorCallBack() {
+		textColorDialog = new ColorDialog(context , new ModifyColorStyle() {
 			@Override
 			public void color(int colorInt) {
-				modifyCallBack.textColorCallBack(colorInt);
-				Log.i("msg","ModifyStyle_colorInt"+colorInt);
-				// TODO Auto-generated method stub
+				modifyCallBack.textColorSingle(colorInt);
 			}
 		}
 				
 				);
-		backgroundColorDialog  = new ColorDialog(context , new ModifyColorCallBack() {
+		backgroundColorDialog  = new ColorDialog(context , new ModifyColorStyle() {
 			@Override
 			public void color(int colorInt) {
-				modifyCallBack.backgroundCallBack(colorInt);
-				Log.i("msg","BACKGROUND   ModifyStyle_colorInt"+colorInt);
-				// TODO Auto-generated method stub
+				modifyCallBack.backgroundSingle(colorInt);
 			}
 		});
 	}
 
 	private void setAction() {
 		btnTextSize.setOnClickListener(new View.OnClickListener() {
-
 			@Override
 			public void onClick(View arg0) {
 				dismiss();
 				sizeDialog.show();
-				Log.i("msg","text_size");
-
 			}
 		});
 		btnBackgroundColor.setOnClickListener(new View.OnClickListener() {
-
 			@Override
 			public void onClick(View arg0) {
 				dismiss();
 				backgroundColorDialog.show();
-				Log.i("msg","back");
 			}
 		});
 		btnTextColor.setOnClickListener(new View.OnClickListener() {
-
 			@Override
 			public void onClick(View arg0) {
 				dismiss();
 				textColorDialog.show();
-				Log.i("msg","text_color");
 			}
 		});
 

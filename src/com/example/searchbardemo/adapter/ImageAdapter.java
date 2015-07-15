@@ -7,7 +7,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.example.searchbardemo.MainActivity;
-import com.example.searchbardemo.MainActivity.ModifyTextSizeCallBack;
+import com.example.searchbardemo.MainActivity.ModifyTextSizeStyle;
 import com.example.searchbardemo.R;
 
 import android.app.Activity;
